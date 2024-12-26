@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akileshwaran V - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="glass-container">
+            <h1 class="logo" data-aos="fade-down">Akileshwaran V</h1>
+            <nav>
+                <ul>
+                    <li><a href="#objective">Objective</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="glass-container">
+        <div class="hero-text">
+            <h1 data-aos="fade-down">Hi, I'm <span>Akileshwaran V</span></h1>
+            <p data-aos="fade-up">Aspiring Software Developer | Problem Solver | Innovator</p>
+            <a href="#projects" class="btn" data-aos="fade-up">View My Work</a>
+        </div>
+    </section>
+
+    <section id="objective" class="glass-container">
+        <h2 data-aos="fade-right">Objective</h2>
+        <p data-aos="fade-left">
+            Aspiring software developer with a strong foundation in programming, embedded systems, and cloud computing. Passionate about solving real-world challenges using technologies like Python, C++, and IoT, with hands-on experience in web development and project management.
+        </p>
+    </section>
+
+    <section id="education" class="glass-container">
+        <h2 data-aos="fade-up">Education</h2>
+        <ul>
+            <li data-aos="fade-right">
+                <strong>Bachelor of Engineering in Electronics and Communication Engineering</strong><br>
+                University College of Engineering - BIT Campus, Anna University, Trichy (2021-2025)<br>
+                CGPA: 7.52
+            </li>
+            <li data-aos="fade-left">
+                <strong>Higher Secondary Certificate (HSC)</strong><br>
+                Sowdambikaa Matric Hr Sec School, Balasamuthiram (2019-2021)<br>
+                Percentage: 91.5%
+            </li>
+            <li data-aos="fade-right">
+                <strong>Secondary School Leaving Certificate (SSLC)</strong><br>
+                Bharathi Vidyalaya High School, Kulithalai (2019)<br>
+                Percentage: 86%
+            </li>
+        </ul>
+    </section>
+
+    <section id="skills" class="glass-container">
+        <h2 data-aos="zoom-in">Technical Skills</h2>
+        <ul>
+            <li>Programming Languages: Python, C, C++, HTML, CSS, Bootstrap</li>
+            <li>Tools and Software: MATLAB, Proteus, Multisim, 8051 Microcontroller Kit, Vector CANoe</li>
+            <li>Other Skills: Web Development, IoT, Networking Concepts</li>
+        </ul>
+    </section>
+
+    <section id="projects" class="glass-container">
+        <h2 data-aos="zoom-in">Projects</h2>
+        <div class="projects">
+            <div class="project" data-aos="flip-left">
+                <h3>Water Level Monitoring System</h3>
+                <p>Developed an IoT-based water level detection system using NodeMCU to monitor and manage water usage efficiently.</p>
+            </div>
+            <div class="project" data-aos="flip-right">
+                <h3>Smart Door Lock Mechanism</h3>
+                <p>Engineered a secure IoT-based door lock system using NodeMCU to enhance home security.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="glass-container">
+        <h2 data-aos="zoom-in">Contact Me</h2>
+        <form id="contact-form" data-aos="zoom-in">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p><center>&copy; 2024 Akileshwaran V. All Rights Reserved.</center></p>
+    </footer>
+
+    <!-- Load EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            duration: 1200,
+            easing: 'ease-in-out',
+            once: true,
+        });
+
+        // EmailJS Integration
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent default form submission
+
+            // Collect form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Validate form fields
+            if (!name || !email || !message) {
+                alert('Please fill out all fields.');
+                return;
+            }
+
+            // Use EmailJS to send the form data
+            emailjs.send('service_ffyywuj', 'template_iu0549h', {
+                from_name: name,
+                from_email: email,
+                message: message,
+            }).then(function(response) {
+                console.log('Success:', response);  // Log success response
+                alert('Message sent successfully! I will get back to you soon.');
+                document.getElementById('contact-form').reset(); // Clear the form
+            }, function(error) {
+                console.error('Error:', error);  // Log error response
+                alert('Failed to send message. Please try again later.');
+            });
+        });
+
+        // Initialize EmailJS
+        (function () {
+            emailjs.init('ZR1XtQE_Cp02j6YiF');  // Replace with your EmailJS public key
+        })();
+    </script>
+</body>
+</html>
